@@ -4,6 +4,8 @@ import pprint
 import time
 from pymongo import MongoClient
 
+print("HELLO WORLD!!!")
+
 # Streamsets credentials
 auth = ('admin', 'admin')
 
