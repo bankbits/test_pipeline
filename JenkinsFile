@@ -13,8 +13,7 @@ pipeline {
     }
     stage('nextStage') {
         steps {
-            #!/bin/sh
-            python ./test1.py
+            sh 'python ./test1.py'
         }
     }
   }
