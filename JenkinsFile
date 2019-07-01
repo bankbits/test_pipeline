@@ -1,5 +1,5 @@
 pipeline {
-  agent { docker { image 'python:3.7.3' } }
+  agent any
   stages {
     stage('myStage'){
       steps {
@@ -13,7 +13,7 @@ pipeline {
     }
     stage('nextStage') {
         steps {
-            sh 'python3 ./streamset_pipelines.py'
+            sh 'python ./test1.py'
         }
     }
   }
