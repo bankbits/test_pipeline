@@ -16,5 +16,10 @@ pipeline {
             sh 'python ./test1.py'
         }
     }
+    stage('post_pipeline') {
+	steps {
+		./curl_test.sh
+	}
+    }
   }
 }
