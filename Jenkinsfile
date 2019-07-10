@@ -22,7 +22,7 @@ pipeline {
 		script {
 			def rootDir = pwd()
 			println("Current Directory: " + rootDir)
-			def example = load "${rootDir}/readfiles.groovy"
+			def example = load "/readfiles.groovy"
 			readfiles.getChangedFilesList()
 		}
 	}
