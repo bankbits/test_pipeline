@@ -26,8 +26,10 @@ pipeline {
     stage('executeGroovy') {
 	steps {
 		script {
-			println(code.getChangedFilesList())
-			println(code.getChangedFilesList())
+			files = code.getChangedFilesList()
+			str_files = files.join(',')
+			println "files list is $str_files"
+			
 		}
 	}
     }
