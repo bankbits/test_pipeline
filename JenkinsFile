@@ -16,10 +16,5 @@ pipeline {
             sh 'python ./test1.py'
         }
     }
-    stage('post_pipeline') {
-	steps {
-	    sh 'curl -X GET http://http://bfstreamsets.innovate.ibm.com:18630/rest/v1/pipelines'
-	}
-    }
   }
 }
