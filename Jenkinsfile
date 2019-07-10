@@ -16,15 +16,12 @@ pipeline {
             sh 'python ./test1.py'
         }
     }
-    stage('readFiles') {
-
+    stage('Load') {
+	code = load 'readfiles.groovy'
+    }
+    stage('executeGroovy') {
 	steps {
-		script {
-			def rootDir = pwd()
-			println("Current Directory: " + rootDir)
-			def example = load "/readfiles.groovy"
-			readfiles.getChangedFilesList()
-		}
+		code.getChangedFilesList()
 	}
     }
   }
