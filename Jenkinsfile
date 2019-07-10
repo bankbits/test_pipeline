@@ -19,13 +19,12 @@ pipeline {
     stage('readFiles') {
 
 	steps {
-		def rootDir = pwd()
-   		println("Current Directory: " + rootDir)
-
-    		// point to exact source file
-    		def example = load "${rootDir}/readfiles.groovy"
-
-    		readfiles.getChangedFilesList()
+		script {
+			def rootDir = pwd()
+			println("Current Directory: " + rootDir)
+			def example = load "${rootDir}/readfiles.groovy"
+			readfiles.getChangedFilesList()
+		}
 	}
     }
   }
