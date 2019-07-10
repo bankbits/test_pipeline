@@ -27,8 +27,7 @@ pipeline {
 	steps {
 		script {
 			files = code.getChangedFilesList()
-			str_files = files.join(',')
-			println "files list is $str_files"
+			println "files list is $files"
 			
 		}
 	}
