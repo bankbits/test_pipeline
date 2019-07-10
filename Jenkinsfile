@@ -17,11 +17,15 @@ pipeline {
         }
     }
     stage('Load') {
-	code = load 'readfiles.groovy'
+	steps {
+		code = load 'readfiles.groovy'
+	}
     }
     stage('executeGroovy') {
 	steps {
-		code.getChangedFilesList()
+		script {
+			code.getChangedFilesList()
+		}
 	}
     }
   }
