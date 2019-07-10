@@ -18,7 +18,9 @@ pipeline {
     }
     stage('Load') {
 	steps {
-		code = load 'readfiles.groovy'
+		script {
+			code = load 'readfiles.groovy'
+		}
 	}
     }
     stage('executeGroovy') {
