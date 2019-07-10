@@ -20,13 +20,14 @@ pipeline {
 	steps {
 		script {
 			code = load 'readfiles.groovy'
+			code.getChangedFilesList()
 		}
 	}
     }
     stage('executeGroovy') {
 	steps {
 		script {
-			files = code.getChangedFilesList()
+			
 			//println "files list is $files"
 			
 		}
