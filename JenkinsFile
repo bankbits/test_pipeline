@@ -16,5 +16,17 @@ pipeline {
             sh 'python ./test1.py'
         }
     }
+    stage('readFiles') {
+
+	steps {
+		def rootDir = pwd()
+   		println("Current Directory: " + rootDir)
+
+    		// point to exact source file
+    		def example = load "${rootDir}/readfiles.groovy"
+
+    		readfiles.getChangedFilesList()
+	}
+    }
   }
 }
