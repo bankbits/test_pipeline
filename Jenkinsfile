@@ -10,9 +10,6 @@ pipeline {
       steps { 
         sh 'ls' 
       }
-      steps {
-	git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT
-      }
     }
     stage('nextStage') {
         steps {
@@ -30,7 +27,7 @@ pipeline {
 	steps {
 		script {
 			files = code.getChangedFilesList()
-			println "files list is $files"
+			//println "files list is $files"
 			
 		}
 	}
