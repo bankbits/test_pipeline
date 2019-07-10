@@ -24,14 +24,5 @@ pipeline {
 		}
 	}
     }
-    stage('executeGroovy') {
-	steps {
-		script {
-			
-			//println "files list is $files"
-			
-		}
-	}
-    }
   }
 }

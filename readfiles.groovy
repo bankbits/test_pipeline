@@ -9,3 +9,5 @@ def build = thr?.executable;
 def changeSet= build.getChangeSet();
 
 changeSet.getItems();
+
+return this
