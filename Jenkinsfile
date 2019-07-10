@@ -27,6 +27,7 @@ pipeline {
 	steps {
 		script {
 			println(code.getChangedFilesList())
+			println(code.getChangedFilesList())
 		}
 	}
     }
