@@ -26,7 +26,7 @@ pipeline {
     stage('executeGroovy') {
 	steps {
 		script {
-			code.getChangedFilesList()
+			println(code.getChangedFilesList())
 		}
 	}
     }
