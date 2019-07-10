@@ -5,6 +5,8 @@ import hudson.plugins.git.*
 import hudson.slaves.*
 import hudson.tasks.*
 
+jenkins = Jenkins.instance
+
 def ln = System.getProperty('line.separator')
 println "---------------Groovy Changelog script Started---------------$ln"
 
