@@ -42,8 +42,11 @@ pipeline {
                   for (int k = 0; k < files.size(); k++) {
                       def file = files[k]
                       echo "  ${file.editType.name} ${file.path}"
-                      def result =  (file.path =~ /(.*?)\.(json)$/)
-                      println(result)
+                      def result_name =  (file.path =~ /(.*?)\.(json)$/)
+                      def result_type = (file.editType.name =~ /(.*?)(add)$/)
+                      if (assert result_name && result_type) {
+                        echo "IT WORKED"
+                      }
                   }
               }
           }
