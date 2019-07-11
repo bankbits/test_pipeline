@@ -42,11 +42,16 @@ pipeline {
                   for (int k = 0; k < files.size(); k++) {
                       def file = files[k]
                       echo "  ${file.editType.name} ${file.path}"
-                      def result_name =  (file.path =~ /(.*?)\.(json)$/)
-                      def result_type = (file.editType.name =~ /(.*?)(add)$/)
-                      if (assert result_name && result_type) {
-                        echo "IT WORKED"
+
+                      try {
+                        assert file.path =~ /(.*?)\.(json)$/
+                        assert file.editType.name =~ /(.*?)(add)$/
+                        echo "json file found!"
+                      } catch(Exception e) {
+                        echo "No json files"
                       }
+                     
+                      
                   }
               }
           }
