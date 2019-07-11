@@ -43,15 +43,12 @@ pipeline {
                       def file = files[k]
                       echo "  ${file.editType.name} ${file.path}"
 
-                      try {
-                        assert file.path =~ /(.*?)\.(json)$/
-                        assert file.editType.name =~ /(.*?)(add)$/
-                        echo "json file found!"
-                      } catch(Exception e) {
-                        echo "No json files"
-                      }
-                     
+                      def isJSON = file.path =~ /(.*?)\.(json)$/
+                      def fileAdded = file.editType.name =~ /(.*?)(add)$/
                       
+                      if (isJSON) {
+                        echo "SUCCESS!!!"
+                    }
                   }
               }
           }
