@@ -16,7 +16,7 @@ pipeline {
             sh 'python ./test1.py'
         }
     }
-stage("last-changes") {
+    stage("last-changes") {
 	steps {
 		script {
         		def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
@@ -32,4 +32,5 @@ stage("last-changes") {
              		 }
      		 }
 	}
+     }
 }
