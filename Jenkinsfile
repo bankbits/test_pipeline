@@ -1,3 +1,4 @@
+def json_files
 pipeline {
   agent any
   stages {
@@ -32,6 +33,7 @@ pipeline {
                 }
         }
         script {
+          json_files = []
           def changeLogSets = currentBuild.changeSets
           for (int i = 0; i < changeLogSets.size(); i++) {
               def entries = changeLogSets[i].items
@@ -47,11 +49,12 @@ pipeline {
                       def fileAdded = file.editType.name =~ /(.*?)(add)$/
                       
                       if (isJSON) {
-                        echo "SUCCESS!!!"
+                        json_files << file.path
                       }
                   }
               }
           }
+          echo " $(json_files)"
         }
 	    }
      }
