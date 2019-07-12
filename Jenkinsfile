@@ -14,7 +14,8 @@ pipeline {
     }
     stage('nextStage') {
         steps {
-            sh 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
+            def script_output = sh 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
+            echo " ${script_output}"
         }
     }
     stage("last-changes") {
