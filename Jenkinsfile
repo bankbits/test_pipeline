@@ -13,7 +13,7 @@ pipeline {
     }
     stage('nextStage') {
         steps {
-            sh 'python ./test1.py'
+            sh 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
         }
     }
     stage("last-changes") {
@@ -48,7 +48,7 @@ pipeline {
                       
                       if (isJSON) {
                         echo "SUCCESS!!!"
-                    }
+                      }
                   }
               }
           }
