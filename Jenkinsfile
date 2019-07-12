@@ -54,7 +54,7 @@ pipeline {
                   }
               }
           }
-          echo " $(json_files)"
+          echo " ${json_files}"
         }
 	    }
      }
