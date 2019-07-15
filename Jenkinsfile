@@ -1,4 +1,5 @@
 def json_files
+def script_output
 pipeline {
   agent any
   stages {
@@ -14,7 +15,9 @@ pipeline {
     }
     stage('nextStage') {
         steps {
-            def script_output = sh 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
+          script_output = sh(script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc', returnStdout: true)
+        }
+        steps {
             echo " ${script_output}"
         }
     }
