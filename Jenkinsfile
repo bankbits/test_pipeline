@@ -18,7 +18,7 @@ pipeline {
     stage('Execute script') {
       steps {
         script {
-            File file1 = new File(build.workspace.toString() + "/output2.json")
+            /* File file1 = new File(build.workspace.toString() + "/output2.json")
             file1.createNewFile()
 
             boolean exists = file1.exists();
@@ -32,7 +32,9 @@ pipeline {
             else
             {
                 println "File not found.";
-            }
+            } */
+            theDir = new File(envVars.get('WORKSPACE'))
+            println theDir.exists()
             
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
