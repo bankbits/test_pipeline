@@ -1,3 +1,5 @@
+import groovy.json.JsonOutput;
+
 def json_files
 def script_output
 pipeline {
@@ -16,9 +18,12 @@ pipeline {
     stage('Execute script') {
       steps {
         script {
-            File testFile = new File("test_json.json")
+         
+            
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
+            def json = JsonOutput.toJson(script_output)
+            new File("output.json").write(json)
             echo " ${script_output}"
             def outJson = readJSON text: script_output
             //groovy.json.JsonOutput.toJson(script_output)
