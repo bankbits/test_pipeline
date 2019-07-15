@@ -13,10 +13,12 @@ pipeline {
         sh 'ls' 
       }
     }
+    stage('Execute script') {
+      steps {
+        script_output = sh(script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc', returnStdout: true)
+      }
+    }
     stage('nextStage') {
-        steps {
-          script_output = sh(script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc', returnStdout: true)
-        }
         steps {
             echo " ${script_output}"
         }
