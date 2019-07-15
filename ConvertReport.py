@@ -12,7 +12,6 @@ import sys
 client = MongoClient('mongodb://9.45.93.21:27017/')
 
 # Input the database name
-#database = raw_input('Input datababse: ')
 database = sys.argv[1]
 # Input the url to get a specific collection from the server
 bfa_db = client[database]
@@ -20,8 +19,8 @@ bfa_db = client[database]
 table_url = sys.argv[2]
 # Locate the report you need:
 # Input the ObjectId of the report you want to convert
-#object = raw_input('Input the ObjectId of your report: ')
 object = sys.argv[3]
+
 # ######################################
 # Generate the record from the specified report
 # ######################################
@@ -31,8 +30,8 @@ col = bfa_db[table_url]
 cursor = col.find({ "_id":ObjectId(object)})
 document = cursor[0]
 
-print("\nThe output of the original report: \n")
-print (document)
+#print("\nThe output of the original report: \n")
+#print (document)
 
 """
 Site type true: all sites
@@ -95,13 +94,16 @@ gen_record = {
         }]
 }   
 
-print("\nThe generated record:\n")
+#print("\nThe generated record:\n")
 
-final_cmd = "bluefringe CRUDReportRegistry createReportRegistry --data \'" + json.dumps(gen_record) + "\'"
-print(final_cmd)
+#final_cmd = "bluefringe CRUDReportRegistry createReportRegistry --data \'" + json.dumps(gen_record) + "\'"
+#print(final_cmd)
+
+
+print(json.dumps(gen_record))
 # print(json.dumps(gen_record))
 #print(json.loads(json.dumps(gen_record)))
-#print(gen_record)
+
 
 with open(str(object) + '.json', 'w') as outfile:
     json.dump(gen_record, outfile)

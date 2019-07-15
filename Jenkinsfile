@@ -19,14 +19,9 @@ pipeline {
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
             echo " ${script_output}"
+            writeJSON file: 'test_json.json', json: script_output
         }
-        
       }
-    }
-    stage('nextStage') {
-        steps {
-            echo " ${script_output}"
-        }
     }
     stage("last-changes") {
 	    steps {
