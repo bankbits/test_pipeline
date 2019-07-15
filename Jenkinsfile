@@ -39,11 +39,11 @@ pipeline {
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
             def json = JsonOutput.toJson(script_output)
             writeFile file: "new_file.json", text: json
-            new File("output.json").write(json)
+            //new File("output.json").write(json)
             echo " ${script_output}"
-            def outJson = readJSON text: script_output
+            // def outJson = readJSON text: script_output
             //groovy.json.JsonOutput.toJson(script_output)
-            writeJSON file: 'test_json.json', json: outJson
+           // writeJSON file: 'test_json.json', json: outJson
         }
       }
     }
