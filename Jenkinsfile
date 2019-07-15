@@ -18,7 +18,21 @@ pipeline {
     stage('Execute script') {
       steps {
         script {
-         
+            File file1 = new File(build.workspace.toString() + "/output2.json")
+            file1.createNewFile()
+
+            boolean exists = file1.exists();
+            if(exists == true)
+            {
+                // printing the permissions associated with the file
+                println "Executable: " + file1.canExecute();
+                println "Readable: " + file1.canRead();
+                println "Writable: "+ file1.canWrite();
+            }
+            else
+            {
+                println "File not found.";
+            }
             
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
