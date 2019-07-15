@@ -100,7 +100,7 @@ gen_record = {
 #print(final_cmd)
 
 
-print(json.dumps(gen_record))
+print(gen_record)
 # print(json.dumps(gen_record))
 #print(json.loads(json.dumps(gen_record)))
 
