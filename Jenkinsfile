@@ -38,8 +38,8 @@ pipeline {
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
             def json = JsonOutput.toJson(script_output)
-            writeFile file: "~/Desktop/new_file.json", text: json
-            String fileText = readFile file: "~/Desktop/new_file.json"
+            writeFile file: "/Users/dianabank/Desktop/ALLERT.json", text: json
+            String fileText = readFile file: "/Users/dianabank/Desktop/ALERT.json"
             //new File("output.json").write(json)
             echo " ${script_output}"
             // def outJson = readJSON text: script_output
