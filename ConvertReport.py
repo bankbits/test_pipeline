@@ -9,14 +9,17 @@ import sys
 # Connect to the mongodb server
 #########################################
 
-client = MongoClient('mongodb://9.45.93.21:27017/')
+client_url = "mongodb://bfmongoadmin:safe4now@9.45.93.21/"
 
-# Input the database name
+
 database = sys.argv[1]
-# Input the url to get a specific collection from the server
-bfa_db = client[database]
-#table_url = raw_input('Input collection url: ')
 table_url = sys.argv[2]
+client_url += database + "." + table_url
+
+client = MongoClient(client_url)
+
+bfa_db = client[database]
+
 # Locate the report you need:
 # Input the ObjectId of the report you want to convert
 object = sys.argv[3]
