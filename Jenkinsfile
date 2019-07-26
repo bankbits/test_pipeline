@@ -42,7 +42,7 @@ pipeline {
             def jsonSlurper = new JsonSlurper()
             File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
             def data = jsonSlurper.parse(file)
-            data.bfa_reports = data.bfa_reports << script_output
+            data.bfa_reports = data.bfa_reports << json
             def json_str = JsonOutput.toJson(data)
             
             file.write(json_str)
