@@ -1,5 +1,5 @@
 import groovy.json.JsonOutput;
-
+import groovy.json.JsonSlurper;
 def json_files
 def script_output
 pipeline {
@@ -38,8 +38,12 @@ pipeline {
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
             def json = JsonOutput.toJson(script_output)
-            writeFile file: "/Users/dianabank/Desktop/ALLERT.json", text: json
-            String fileText = readFile file: "/Users/dianabank/Desktop/ALERT.json"
+            def jsonSlurper = new JsonSlurper()
+            File file = new File('reports.json')
+            def data = jsonSlurper.parse(file)
+            echo "${data}"
+            // writeFile file: "reports.json", text: json
+            // String fileText = readFile file: "reports.json"
             //new File("output.json").write(json)
             echo " ${script_output}"
             // def outJson = readJSON text: script_output
