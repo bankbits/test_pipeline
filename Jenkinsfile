@@ -42,13 +42,13 @@ pipeline {
             File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
             def data = jsonSlurper.parse(file)
             data.bfa_reports = data.bfa_reports << script_output
-            def json_pretty = JsonOutput.prettyPrint(data)
-            file.write(json_pretty)
+            // def json_pretty = JsonOutput.prettyPrint(data)
+            file.write(data)
             echo "${data}"
             // writeFile file: "reports.json", text: json
             // String fileText = readFile file: "reports.json"
             //new File("output.json").write(json)
-            echo " ${script_output}"
+            // echo " ${script_output}"
             // def outJson = readJSON text: script_output
             //groovy.json.JsonOutput.toJson(script_output)
            // writeJSON file: 'test_json.json', json: outJson
