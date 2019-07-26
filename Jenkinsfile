@@ -45,10 +45,11 @@ pipeline {
             def data = jsonSlurper.parse(file)
             data.bfa_reports = data.bfa_reports << script_output
             String newJson = new JsonBuilder(data).toPrettyString()
+
             //writeJSON file: '/Users/dianabank/Desktop/test_pipeline/reports.json', json: json_str, pretty: 4
             // file.write(json_str)
             file.withWriter( 'UTF-8' ) { newJson }
-            echo "${data}"
+            echo "OUTPUT NEW JSON ${newJson}"
             
             // def outJson = readJSON text: script_output
             
