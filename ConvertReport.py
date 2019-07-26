@@ -10,7 +10,7 @@ import sys
 #########################################
 
 client_url = "mongodb://bfmongoadmin:safe4now@9.45.93.21/"
-
+#update authentification to mongodb server
 
 database = sys.argv[1]
 table_url = sys.argv[2]
