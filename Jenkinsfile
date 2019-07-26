@@ -38,9 +38,12 @@ pipeline {
             
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
-            def json = JsonOutput.toJson(script_output)
-            echo "${json}"
+            // def json = JsonOutput.toJson(script_output)
+            
+            
             def jsonSlurper = new JsonSlurper()
+            def json = jsonSlurper.parseText(script_output)
+            echo "${json}"
             File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
             def data = jsonSlurper.parse(file)
             data.bfa_reports = data.bfa_reports << script_output
