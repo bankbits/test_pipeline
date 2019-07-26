@@ -42,8 +42,9 @@ pipeline {
             File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
             def data = jsonSlurper.parse(file)
             data.bfa_reports = data.bfa_reports << script_output
+            def json_str = JsonOutput.toJson(data)
             // def json_pretty = JsonOutput.prettyPrint(data)
-            file.write(data)
+            file.write(json_str)
             echo "${data}"
             // writeFile file: "reports.json", text: json
             // String fileText = readFile file: "reports.json"
