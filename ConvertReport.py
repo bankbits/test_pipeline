@@ -68,7 +68,6 @@ report_params = db_report['parameters']
 # the generated record object from the mongodb report
 gen_record = {
 
-        "bfa_reports":[{
         "ID": table_url + "_" + object,
         "Name": str(db_report["name"]) + "_" + object,
         "Description": str(gen_desc(report_info)),
@@ -94,7 +93,6 @@ gen_record = {
         "Metadata": {
 
         }
-        }]
 }   
 
 #print("\nThe generated record:\n")
