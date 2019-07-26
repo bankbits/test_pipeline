@@ -42,10 +42,10 @@ pipeline {
             def jsonSlurper = new JsonSlurper()
             File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
             def data = jsonSlurper.parse(file)
-            data.bfa_reports = data.bfa_reports << json
+            data.bfa_reports = data.bfa_reports << script_output
             def json_str = JsonOutput.toJson(data)
-            
-            file.write(json_str)
+            writeJSON file: '/Users/dianabank/Desktop/test_pipeline/reports.json', json: json_str, pretty: 4
+            // file.write(json_str)
             echo "${data}"
             
             // def outJson = readJSON text: script_output
