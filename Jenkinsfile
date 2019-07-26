@@ -51,7 +51,7 @@ pipeline {
 
             //writeJSON file: '/Users/dianabank/Desktop/test_pipeline/reports.json', json: json_str, pretty: 4
             // file.write(json_str)
-            file.write(json_str)
+            file.write(newJson)
             echo "OUTPUT NEW JSON ${newJson}"
             
             // def outJson = readJSON text: script_output
