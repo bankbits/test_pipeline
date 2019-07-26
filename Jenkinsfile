@@ -39,7 +39,7 @@ pipeline {
             script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
             def json = JsonOutput.toJson(script_output)
             def jsonSlurper = new JsonSlurper()
-            File file = new File('reports.json')
+            File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
             def data = jsonSlurper.parse(file)
             echo "${data}"
             // writeFile file: "reports.json", text: json
