@@ -50,7 +50,7 @@ pipeline {
             String newJson = new JsonBuilder(data).toPrettyString()
 
 
-            File config_file = new FIle('/Users/dianabank/Desktop/test_pipeline/config.json')
+            File config_file = new File('/Users/dianabank/Desktop/test_pipeline/config.json')
             def config_data = jsonSlurper.parse(config_file)
             def reports = config_data.reports
             echo "${reports}"
