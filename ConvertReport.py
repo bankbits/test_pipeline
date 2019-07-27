@@ -68,7 +68,7 @@ report_params = db_report['parameters']
 # the generated record object from the mongodb report
 gen_record = {
 
-        "ID": table_url + "_" + object,
+        "ID": str(object),
         "Name": str(db_report["name"]) + "_" + object,
         "Description": str(gen_desc(report_info)),
         "SourceType": 'MONGO',

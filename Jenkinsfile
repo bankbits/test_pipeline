@@ -49,6 +49,12 @@ pipeline {
             data.bfa_reports = data.bfa_reports << json
             String newJson = new JsonBuilder(data).toPrettyString()
 
+
+            File config_file = new FIle('/Users/dianabank/Desktop/test_pipeline/config.json')
+            def config_data = jsonSlurper.parse(config_file)
+            def reports = config_data.reports
+            echo "${reports}"
+
             //writeJSON file: '/Users/dianabank/Desktop/test_pipeline/reports.json', json: json_str, pretty: 4
             // file.write(json_str)
             file.write(newJson)
