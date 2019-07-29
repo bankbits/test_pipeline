@@ -46,9 +46,10 @@ pipeline {
             //config_data = jsonSlurper.parse(config_file)
             config_data = readJSON file: '/Users/dianabank/Desktop/test_pipeline/config.json'
             def reports = config_data.reports
+            jsonSlurper = new JsonSlurperClassic()
             reports.each { 
 
-              jsonSlurper = new JsonSlurperClassic()
+              
               def server = it["server"]
               def col = it["collection"]
               def object = it["object"] 
