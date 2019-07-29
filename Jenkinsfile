@@ -46,7 +46,7 @@ pipeline {
             //config_data = jsonSlurper.parse(config_file)
             config_data = readJSON file: '/Users/dianabank/Desktop/test_pipeline/config.json'
             def reports = config_data.reports
-            jsonSlurper = new JsonSlurperClassic()
+            // jsonSlurper = new JsonSlurper()
             reports.each { 
 
               
@@ -57,7 +57,8 @@ pipeline {
 
               script_str = 'python ConvertReport.py ' + server + ' ' + col + ' ' + object
               script_output = sh(returnStdout: true, script: script_str)
-              def output_test = jsonSlurper.parseText(script_output) 
+              //def output_test = jsonSlurper.parseText(script_output) 
+              def output_test = readJSON text: script_output
               echo "${output_test}"
               // json = jsonSlurper2.parseText(script_output)
               // echo "${script_output}"
