@@ -40,7 +40,9 @@ pipeline {
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             // script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
             // def json = JsonOutput.toJson(script_output)
-            
+            def jsonParse(def json) {
+              new groovy.json.JsonSlurperClassic().parseText(json)
+            }
             
             jsonSlurper = new JsonSlurperClassic()
 
@@ -56,7 +58,7 @@ pipeline {
               script_str = 'python ConvertReport.py ' + server + ' ' + col + ' ' + object
               def script_output = sh(returnStdout: true, script: script_str)
 
-              def json = jsonSlurper.parseText(script_output)
+              def json = jsonParse(script_output)
               echo "${json}"
               File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
               def data = jsonSlurper.parse(file)
