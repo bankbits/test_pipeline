@@ -48,7 +48,7 @@ pipeline {
             def reports = config_data.reports
             reports.each { 
 
-              //jsonSlurper2 = new JsonSlurperClassic()
+              jsonSlurper = new JsonSlurperClassic()
               def server = it["server"]
               def col = it["collection"]
               def object = it["object"] 
