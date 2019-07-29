@@ -5,7 +5,6 @@ import groovy.json.JsonSlurperClassic
 
 import groovy.json.*
 def json_files
-def script_output
 pipeline {
   agent any
   stages {
