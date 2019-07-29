@@ -1,5 +1,8 @@
 import groovy.json.JsonOutput;
 import groovy.json.JsonSlurper;
+
+import groovy.json.JsonSlurperClassic 
+
 import groovy.json.*
 def json_files
 def script_output
@@ -41,7 +44,7 @@ pipeline {
             // def json = JsonOutput.toJson(script_output)
             
             
-            def jsonSlurper = new JsonSlurper()
+            def jsonSlurper = new JsonSlurperClassic()
 
             File config_file = new File('/Users/dianabank/Desktop/test_pipeline/config.json')
             config_data = jsonSlurper.parse(config_file)
