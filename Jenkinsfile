@@ -54,7 +54,10 @@ pipeline {
             def config_data = jsonSlurper.parse(config_file)
             def reports = config_data.reports
             reports.each { 
-              println it["object"] 
+              def server = it["server"]
+              def col = it["collection"]
+              def object = it["object"] 
+              println (server + " " + col + " " + object)
             }
             echo "${config_data['reports']}"
 
