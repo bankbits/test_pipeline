@@ -53,7 +53,9 @@ pipeline {
             File config_file = new File('/Users/dianabank/Desktop/test_pipeline/config.json')
             def config_data = jsonSlurper.parse(config_file)
             def reports = config_data.reports
-            reports.each { println it }
+            reports.each { 
+              println it["object"] 
+            }
             echo "${config_data['reports']}"
 
             //writeJSON file: '/Users/dianabank/Desktop/test_pipeline/reports.json', json: json_str, pretty: 4

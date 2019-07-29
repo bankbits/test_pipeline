@@ -134,6 +134,33 @@
             },
             "ID": "5cc2006d016c58023e9d76dc",
             "SourceType": "MONGO"
+        },
+        {
+            "Description": "Connection counts for wiredDataAllSite wifiDataAllSite mixipv4DataAllSite slaacDataAllSite ",
+            "Parameters": {
+                "message_id": "000000",
+                "sub_type": "daily",
+                "end_date": "2019-04-24",
+                "account": "bld1prod_ipv6_new",
+                "org": "IPV6",
+                "sub_class": "",
+                "classs": "",
+                "start_date": "2019-04-24",
+                "types": "batch",
+                "report_id": "asa_bch_1001_wiredwifiMixipv4Slaac"
+            },
+            "Metadata": {
+                
+            },
+            "Name": "daily_5cc2006d016c58023e9d76dc",
+            "SourceParameter": {
+                "table": "IPV6_000000_allSite_daily",
+                "host": "mongodb://9.45.93.21",
+                "port": "27017",
+                "database": "bfmongodb"
+            },
+            "ID": "5cc2006d016c58023e9d76dc",
+            "SourceType": "MONGO"
         }
     ]
 }
