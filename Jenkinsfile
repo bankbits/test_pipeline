@@ -54,9 +54,10 @@ pipeline {
               def object = it["object"] 
               println (server + " " + col + " " + object)
 
-              //script_str = 'python ConvertReport.py ' + server + ' ' + col + ' ' + object
-              // script_output = sh(returnStdout: true, script: script_str)
-
+              script_str = 'python ConvertReport.py ' + server + ' ' + col + ' ' + object
+              script_output = sh(returnStdout: true, script: script_str)
+              def object = jsonSlurper.parseText(script_output) 
+              echo "${object}"
               // json = jsonSlurper2.parseText(script_output)
               // echo "${script_output}"
               /* File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
