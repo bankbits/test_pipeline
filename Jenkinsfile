@@ -37,11 +37,6 @@ pipeline {
                 println "File not found.";
             } */
            
-            @NonCPS
-            def parseJsonText(String jsonText) {
-              final slurper = new JsonSlurper()
-              return new HashMap<>(slurper.parseText(jsonText))
-            }
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             // script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
             // def json = JsonOutput.toJson(script_output)
