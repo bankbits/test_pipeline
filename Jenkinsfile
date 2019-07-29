@@ -40,14 +40,15 @@ pipeline {
             // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
             // script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
             // def json = JsonOutput.toJson(script_output)
-            jsonSlurper = new JsonSlurper()
+            //jsonSlurper = new JsonSlurper()
 
-            File config_file = new File('/Users/dianabank/Desktop/test_pipeline/config.json')
-            config_data = jsonSlurper.parse(config_file)
+            //File config_file = new File('/Users/dianabank/Desktop/test_pipeline/config.json')
+            //config_data = jsonSlurper.parse(config_file)
+            config_data = readJSON file: '/Users/dianabank/Desktop/test_pipeline/config.json'
             def reports = config_data.reports
             reports.each { 
 
-              jsonSlurper2 = new JsonSlurperClassic()
+              //jsonSlurper2 = new JsonSlurperClassic()
               def server = it["server"]
               def col = it["collection"]
               def object = it["object"] 
