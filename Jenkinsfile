@@ -41,10 +41,10 @@ pipeline {
         }
       }
     }
-    stage("last changes") {
+   /* stage("last changes") {
 	    steps {
         script {
-                def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
+               def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
                       publisher.publishLastChanges()
                       def changes = publisher.getLastChanges()
                       println(changes.getEscapedDiff())
@@ -53,7 +53,7 @@ pipeline {
                           def commitInfo = commit.getCommitInfo()
                           println(commitInfo)
                           println(commitInfo.getCommitMessage())
-                          println(commit.getChanges())
+                          println(commit.getChanges()) 
                 }
         }
         script {
@@ -81,7 +81,7 @@ pipeline {
           echo " ${json_files}"
         }
 	    }
-     }
+     } */
 
   }
 }
