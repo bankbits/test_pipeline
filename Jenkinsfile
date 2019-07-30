@@ -85,7 +85,7 @@ pipeline {
         }
       }
     }
-    stage("last-changes") {
+    stage("last changes") {
 	    steps {
         script {
                 def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
@@ -125,6 +125,13 @@ pipeline {
           echo " ${json_files}"
         }
 	    }
+     }
+
+     stage('commit changes') {
+       withCredentials([usernamePassword(credentialsId: 'github bankbits', passwordVariable: 'GittyHubby77', usernameVariable: 'bankbits')]) {
+                        sh('git status https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/test_pipeline.git')
+                    }
+
      }
   }
 }
