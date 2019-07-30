@@ -21,35 +21,11 @@ pipeline {
     stage('Execute script') {
       steps {
         script {
-            /* File file1 = new File(build.workspace.toString() + "/output2.json")
-            file1.createNewFile()
-
-            boolean exists = file1.exists();
-            if(exists == true)
-            {
-                // printing the permissions associated with the file
-                println "Executable: " + file1.canExecute();
-                println "Readable: " + file1.canRead();
-                println "Writable: "+ file1.canWrite();
-            }
-            else
-            {
-                println "File not found.";
-            } */
-           
-            // sh 'python -u ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc'
-            // script_output = sh(returnStdout: true, script: 'python ConvertReport.py bfmongodb IPV6_000000_allSite_daily 5cc2006d016c58023e9d76dc')
-            // def json = JsonOutput.toJson(script_output)
-            //jsonSlurper = new JsonSlurper()
-
-            //File config_file = new File('/Users/dianabank/Desktop/test_pipeline/config.json')
-            //config_data = jsonSlurper.parse(config_file)
+            
             config_data = readJSON file: '/Users/dianabank/Desktop/test_pipeline/config.json'
             def reports = config_data.reports
-            // jsonSlurper = new JsonSlurper()
             reports.each { 
 
-              
               def server = it["server"]
               def col = it["collection"]
               def object = it["object"] 
@@ -57,31 +33,11 @@ pipeline {
 
               script_str = 'python ConvertReport.py ' + server + ' ' + col + ' ' + object
               script_output = sh(returnStdout: true, script: script_str)
-              //def output_test = jsonSlurper.parseText(script_output) 
+             
               def output_test = readJSON text: script_output
               echo "${output_test}"
-              // json = jsonSlurper2.parseText(script_output)
-              // echo "${script_output}"
-              /* File file = new File('/Users/dianabank/Desktop/test_pipeline/reports.json')
-              data = jsonSlurper.parse(file)
-              data.bfa_reports = data.bfa_reports << json
-              String newJson = new JsonBuilder(data).toPrettyString()
               
-              file.write(newJson)
-              echo "OUTPUT NEW JSON ${newJson}"
-
-              script_output = null
-              json = null
-              newJson = null */
             }
-            // echo "${config_data['reports']}"
-
-            //writeJSON file: '/Users/dianabank/Desktop/test_pipeline/reports.json', json: json_str, pretty: 4
-            // file.write(json_str)
-            
-            
-            // def outJson = readJSON text: script_output
-            
         }
       }
     }
@@ -127,15 +83,5 @@ pipeline {
 	    }
      }
 
-     stage('commit changes') {
-       steps {
-          withCredentials([usernamePassword(credentialsId: 'bfd83313-6f7b-4098-b3ea-145f4d04f3b3', passwordVariable: 'GittyHubby77', usernameVariable: 'bankbits')]) {
-            sh('git status https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/test_pipeline.git')
-            sh('git add .')
-            sh('git commit -m "testing"')
-            sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/bankbits/test_pipeline.git HEAD:master')
-          }
-        }
-     }
   }
 }
