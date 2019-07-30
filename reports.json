@@ -28,7 +28,7 @@
             "SourceType": "MONGO"
         },
         {
-            "Description": "Connection counts for wiredDataAllSite wifiDataAllSite mixipv4DataAllSite slaacDataAllSite ",
+            "Description": "Connection test counts for wiredDataAllSite wifiDataAllSite mixipv4DataAllSite slaacDataAllSite ",
             "Parameters": {
                 "message_id": "000000",
                 "sub_type": "daily",
