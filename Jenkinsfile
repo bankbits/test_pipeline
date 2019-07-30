@@ -128,10 +128,11 @@ pipeline {
      }
 
      stage('commit changes') {
-       withCredentials([usernamePassword(credentialsId: 'github bankbits', passwordVariable: 'GittyHubby77', usernameVariable: 'bankbits')]) {
-                        sh('git status https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/test_pipeline.git')
-                    }
-
+       steps {
+          withCredentials([usernamePassword(credentialsId: 'github bankbits', passwordVariable: 'GittyHubby77', usernameVariable: 'bankbits')]) {
+              sh('git status https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/test_pipeline.git')
+          }
+       }
      }
   }
 }
