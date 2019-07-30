@@ -19,6 +19,11 @@
             "server": "bfmongodb",
             "collection": "IPV6_000000_allSite_daily",
             "object": "5cbde63b016c5806f4ddc7ff"
+        },
+        {
+            "server": "bfmongodb",
+            "collection": "IPV6_000000_allSite_daily",
+            "object": "5cbde63b016c5806f4ddc7ff"
         }
     ]
 }
