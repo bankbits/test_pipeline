@@ -133,6 +133,7 @@ pipeline {
             sh('git status https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/test_pipeline.git')
             sh('git add .')
             sh('git commit -m "testing"')
+            sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/test_pipeline.git')
           }
         }
      }
